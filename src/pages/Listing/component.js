@@ -23,7 +23,7 @@ export default class ListingComponent extends React.Component{
           onClick={() => {
             if(!this.state.filterStatus){
               this.setState({
-                users: this.state.users.filter(item=> item.age>=20 && item.age<=30 && (item.firstName+item.lastName).length>=9),
+                users: this.state.users.filter(item=> item.age>=20 && item.age<30 && (item.firstName+item.lastName).length>=9),
                 filterStatus: true
               })
               //9 because there will be a space between firstName and the lastName

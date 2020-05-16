@@ -28,7 +28,7 @@ export default class LoginComponent extends React.Component{
               <Row className="justify-content-center mb-2">
                 Password
               </Row>
-              <Row>
+              <Row className='p-2'>
                 <Input type='password' onChange={(e)=> this.setState({password: e.target.value})}/>
               </Row>
               <Row>
