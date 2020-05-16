@@ -11,11 +11,12 @@ export default class ListingComponent extends React.Component{
   }
   render(){
     return(
-      <div
+      <Card
         style={{
           position: 'absolute', left: '50%', top: '50%',
           transform: 'translate(-50%, -50%)'
         }}
+        className='p-3'
       >
       <div className='d-flex justify-content-between mb-2'>
         <Button
@@ -43,7 +44,7 @@ export default class ListingComponent extends React.Component{
       </div>
       {this.state.users.map((item,idx) =>{
         return (
-        <Card className='mb-1'>
+        <Card className='mb-1 p-2'>
           <Row>
             <Col>
               <b>First Name:</b> {item.firstName}
@@ -58,7 +59,7 @@ export default class ListingComponent extends React.Component{
         </Card>
         )
       })}
-    </div>
+    </Card>
     )
   }
 }

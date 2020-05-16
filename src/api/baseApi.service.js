@@ -11,7 +11,7 @@ export default class BaseApi {
 			timeout: 60000,
 			json: true		
 		};
-		console.log(options)
+		
 		try {
 			return (await request(requestOptions)).data
 		} catch (error) {

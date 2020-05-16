@@ -10,7 +10,6 @@ export default class ListingContainer extends React.Component{
   getUsers = () => {
     ApiService.getUsers()
     .then((data) => {
-      console.log(data)
       this.setState({users: data})
     })
   }
