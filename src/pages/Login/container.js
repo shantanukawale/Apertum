@@ -9,7 +9,9 @@ export default class LoginContainer extends React.Component{
     .then((data) => {
       if(data && data.token) {
         const cookies = new Cookies();
-        cookies.set('token', data.token, { path: '/' });
+        cookies.set('token', data.token, { path: '/'});
+        //A httpOnly and secure cookie would be a better idea but I couldn't figure out how to do that.
+        //Setting the options for secure and httpOnly as true just made the cookie disappear from the browser cookies.
       }
     })
     .then(()=>{
