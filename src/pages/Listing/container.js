@@ -1,6 +1,7 @@
 import React from 'react'
 import ListingComponent from './component'
 import ApiService from '../../api/api.service'
+import Cookies from 'universal-cookie';
 
 export default class ListingContainer extends React.Component{
   state = {
@@ -15,7 +16,8 @@ export default class ListingContainer extends React.Component{
   }
 
   logout = () => {
-    localStorage.removeItem('token')
+    const cookies = new Cookies();
+    cookies.remove('token');
     window.location.pathname = '/'
   }
 

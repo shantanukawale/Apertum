@@ -1,10 +1,12 @@
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import React, {Suspense, lazy, Fragment} from 'react';
 import Loader from 'react-loaders'
-
+import Cookies from 'universal-cookie';
 import PageNotFound from '../commons/pageNotFound'
 const LoginContainer = lazy(() => import('./Login/container'));
 const ListingContainer = lazy(() => import('./Listing/container'));
+
+const cookies = new Cookies()
 
 const Routes = () => { 
   return (
@@ -24,7 +26,7 @@ const Routes = () => {
         <BrowserRouter>
           <Switch>
             {
-                localStorage.getItem('token')
+                cookies.get('token')
               ?
                 <Route 
                     path={`/list`}
@@ -42,7 +44,7 @@ const Routes = () => {
 
           </Switch>
           <Route exact path="/" render={() => (
-            <Redirect to={localStorage.getItem('token')?'/list':'/'}/>
+            <Redirect to={cookies.get('token')?'/list':'/'}/>
           )}/>
           </BrowserRouter>
       </Suspense>

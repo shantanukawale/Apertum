@@ -1,4 +1,7 @@
 import request from "axios";
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 export default class BaseApi {
 	makeRequest = async (options) => {
@@ -16,7 +19,7 @@ export default class BaseApi {
 			return (await request(requestOptions)).data
 		} catch (error) {
 			if (error && error.response && error.response.status === 403) {
-				localStorage.removeItem('token')
+        cookies.remove('token');
 				window.location.pathname = '/';
 			}
 		}
@@ -27,7 +30,7 @@ export default class BaseApi {
 				'accept': 'application/json',
 				'content-type': "application/json",
 				'cache-control':  'no-cache',
-				'authorization': localStorage.getItem('token') ? 'Bearer '+localStorage.getItem('token') : '',
+				'authorization': cookies.get('token') ? 'Bearer '+cookies.get('token') : '',
 			}
 		}
 }
